@@ -1,7 +1,0 @@
-import React,{useState} from "react";
-const initial=[{name:"Aarav Das",roll:"101",department:"BCA",semester:5,cgpa:8.7,photo:"https://placehold.co/100x100?text=AD"},{name:"Mira Sen",roll:"102",department:"BCA",semester:5,cgpa:9.1,photo:"https://placehold.co/100x100?text=MS"},{name:"Rohan Roy",roll:"103",department:"BSc CS",semester:3,cgpa:7.9,photo:"https://placehold.co/100x100?text=RR"}];
-function Header(){return <header><h1>Student Information Portal</h1><p>Student records passed through props</p></header>}
-function StudentCard({student}){return <article className="card row"><img width="82" height="82" src={student.photo} alt={student.name}/><div><h3>{student.name}</h3><p>Roll: {student.roll} · {student.department}</p><p>Semester: {student.semester} · CGPA: <b>{student.cgpa}</b></p></div></article>}
-function StudentList({students}){return <div className="grid">{students.map(s=><StudentCard key={s.roll} student={s}/>)}</div>}
-function Footer({count}){return <footer>Total students: {count}</footer>}
-export default function App(){const [sort,setSort]=useState("desc");const students=[...initial].sort((a,b)=>sort==="desc"?b.cgpa-a.cgpa:a.cgpa-b.cgpa);return <><Header/><main className="container"><div className="row"><h2>Students</h2><label>Sort by CGPA <select value={sort} onChange={e=>setSort(e.target.value)}><option value="desc">Highest first</option><option value="asc">Lowest first</option></select></label></div><StudentList students={students}/></main><Footer count={students.length}/></>}
