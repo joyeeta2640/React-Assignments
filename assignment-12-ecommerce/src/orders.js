@@ -1,0 +1,1 @@
+import{createSlice,nanoid}from"@reduxjs/toolkit";const slice=createSlice({name:"orders",initialState:{items:[]},reducers:{place:(s,a)=>{s.items.unshift({...a.payload,id:nanoid(),date:new Date().toLocaleString()})}}});export const{place}=slice.actions;export default slice.reducer;
